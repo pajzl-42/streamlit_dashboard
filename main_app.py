@@ -11,6 +11,19 @@ selected_columns = ['lat','lon']
 df_temp = df_bikes[selected_columns]
 df_temp = df_temp.sample(frac=0.5)
 
+query_morning = """ select 
+	hour(started_at),start_station_latitude as lat, start_station_longitude as lon
+from edinburgh_bikes
+where hour(started_at) between 6 and 9  """
+
+query_afternoon = """ select 
+	hour(started_at),start_station_latitude as lat, start_station_longitude as lon
+from edinburgh_bikes
+where hour(started_at) between 15 and 19  """
+
+df_bikes_morning = pd.read_sql(sql=query_morning, con=engine)
+df_bikes_afternoon = pd.read_sql(sql=query_afternoon, con=engine)
+
 st.title("Moje první appka")
 
 page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
@@ -18,6 +31,8 @@ page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
 if page == "Mapa":
 	st.write("Mapa používání sdílených kol v Edinburghu")
 	st.map(df_temp)
+	st.map(df_bikes_morning)
+	st.map(df_bikes_evening)
 		
 if page == "Thomson":
 	st.write("Toto je Thomson")
