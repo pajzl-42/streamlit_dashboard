@@ -29,7 +29,7 @@ st.title("Moje první appka")
 page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
 
 if page == "Mapa":
-	col1, col2 = st.columns(1)
+	col1, col2 = st.columns(2)
 	st.write("Mapa používání sdílených kol v Edinburghu")
 	col1.map(df_bikes_morning)
 	col2.map(df_bikes_afternoon)
