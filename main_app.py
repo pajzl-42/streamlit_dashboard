@@ -6,8 +6,8 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 engine = create_engine("mysql+pymysql://data-student:u9AB6hWGsNkNcRDm@data.engeto.com:3306/data_academy_04_2022")
-df_bikes = pd.read_sql(sql='select * from edinburgh_bikes LIMIT 10000', con=engine)
-selected_columns = ['start_station_latitude','start_station_longitude']
+df_bikes = pd.read_sql(sql='select start_station_latitude as lat, start_station_longitude as lon  from edinburgh_bikes LIMIT 10000', con=engine)
+selected_columns = ['lat','lon']
 df_temp = df_bikes[selected_columns]
 df_temp = df_temp.sample(frac=0.5)
 
