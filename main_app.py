@@ -32,7 +32,7 @@ if page == "Mapa":
 	st.write("Mapa používání sdílených kol v Edinburghu")
 	st.map(df_temp)
 	st.map(df_bikes_morning)
-	st.map(df_bikes_evening)
+	st.map(df_bikes_afternoon)
 		
 if page == "Thomson":
 	st.write("Toto je Thomson")
