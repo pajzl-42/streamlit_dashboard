@@ -17,9 +17,7 @@ page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
 
 if page == "Mapa":
 	st.write("Mapa používání sdílených kol v Edinburghu")
-	fig = px.scatter_mapbox(df_temp,lat='start_station_latitude', lon='start_station_longitude')
-	fig.update_layout(mapbox_style="open-street-map")
-	fig.show()
+	st.map(df_temp)
 		
 if page == "Thomson":
 	st.write("Toto je Thomson")
