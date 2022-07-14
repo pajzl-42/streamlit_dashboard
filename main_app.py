@@ -24,6 +24,8 @@ where hour(started_at) between 15 and 19  """
 df_bikes_morning = pd.read_sql(sql=query_morning, con=engine)
 df_bikes_afternoon = pd.read_sql(sql=query_afternoon, con=engine)
 
+st.page_config(layout=wide)
+
 st.title("Moje první appka")
 
 page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
