@@ -1,5 +1,0 @@
-sqlalchemy
-pandas
-pymysql
-plotly.graph_objects
-plotly.express
