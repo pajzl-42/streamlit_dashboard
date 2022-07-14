@@ -34,13 +34,13 @@ if page == "Mapa":
 	
 	df_bikes_morning = pd.read_sql(sql=query_morning, con=engine)
 	
-	from_hour_afternoon = col1.slider("Večer od: ", min_value = 16, max_value = 22, value = 17)
-	to_hour_afternoon = col1.slider("Večer do: ", min_value = 16, max_value = 23, value = 17)
+	from_hour_afternoon = col2.slider("Večer od: ", min_value = 16, max_value = 22, value = 17)
+	to_hour_afternoon = col2.slider("Večer do: ", min_value = 16, max_value = 23, value = 17)
 	
 	query_afternoon = """ select 
 		hour(started_at),start_station_latitude as lat, start_station_longitude as lon
 	from edinburgh_bikes
-	where hour(started_at) between {} and {}""".format(from_hour_afternoon,to_hour_Afternoon)
+	where hour(started_at) between {} and {}""".format(from_hour_afternoon,to_hour_afternoon)
 	
 	df_bikes_afternoon = pd.read_sql(sql=query_afternoon, con=engine)
 
