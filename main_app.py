@@ -14,6 +14,10 @@ page = st.sidebar.radio("Select page", ["Mapa", "Thomson"])
 
 if page == "Mapa":
 
+	
+	
+	col1,col2 = st.columns(2)
+
 	engine = create_engine("mysql+pymysql://data-student:u9AB6hWGsNkNcRDm@data.engeto.com:3306/data_academy_04_2022")
 	df_bikes = pd.read_sql(sql='select start_station_latitude as lat, start_station_longitude as lon  from edinburgh_bikes LIMIT 10000', con=engine)
 	selected_columns = ['lat','lon']
@@ -40,7 +44,7 @@ if page == "Mapa":
 	
 	df_bikes_afternoon = pd.read_sql(sql=query_afternoon, con=engine)
 
-	col1, col2 = st.columns(2)
+	
 	st.write("Mapa používání sdílených kol v Edinburghu")
 	col1.map(df_bikes_morning)
 	col2.map(df_bikes_afternoon)
