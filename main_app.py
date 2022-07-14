@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import plotly.express as px
 
 engine = create_engine("mysql+pymysql://data-student:u9AB6hWGsNkNcRDm@data.engeto.com:3306/data_academy_04_2022")
-query = 'SELECT * FROM covid19_basic ORDER BY date DESC LIMIT 20000'
+df_bikes = pd.read_sql(sql='select * from edinburgh_bikes LIMIT 10000', con=engine)
 df = pd.read_sql(sql=query, con=engine)
 selected_columns = ['start_station_latitude','start_station_longitude']
 df_temp = df_bikes[selected_columns]
